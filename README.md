@@ -8,9 +8,10 @@ O script `Script.py`:
 
 1. Localiza a pasta `Documents/downloads_teste` dentro do diretório do usuário.
 2. Lista os arquivos presentes diretamente nessa pasta.
-3. Cria subpastas com o nome de cada extensão, caso ainda não existam.
-4. **Move** os arquivos para as subpastas correspondentes.
-5. Exibe um resumo com o total por tipo.
+3. Cria subpastas por extensão.
+4. **Move** os arquivos sem sobrescrever nomes repetidos.
+5. Arquivos sem extensão são colocados em `sem_extensao`.
+6. Exibe o total por extensão e quantos conflitos foram ignorados.
 
 ## Tecnologias
 
@@ -29,7 +30,23 @@ cd Organizador_De_Arquivos
 python Script.py
 ```
 
-**Antes de executar:** crie uma pasta `downloads_teste` dentro de `Documents` do seu usuário e coloque nela apenas arquivos descartáveis para teste. O script usa esse caminho fixo e **move os arquivos originais**, não apenas gera uma prévia. No Windows com OneDrive ou Documents redirecionado, verifique se o caminho configurado em `Script.py` corresponde à pasta real.
+**Antes de executar:** crie uma pasta `downloads_teste` dentro de `Documents` do seu usuário e coloque nela apenas arquivos descartáveis para teste. Por padrão, **move os arquivos originais**, mas você pode testar antes com `--simular`. No Windows com OneDrive ou Documents redirecionado, verifique se o caminho configurado em `Script.py` corresponde à pasta real.
+
+## Modos de execução
+
+Simular sem mover arquivos:
+
+```powershell
+python Script.py --simular
+```
+
+Selecionar outra pasta para simulação:
+
+```powershell
+python Script.py --pasta "C:\\Users\\SeuUsuario\\Downloads" --simular
+```
+
+Para mover arquivos dessa pasta, execute o comando sem `--simular`. Arquivos com nomes já existentes no destino são ignorados, não sobrescritos.
 
 ## Exemplo
 
@@ -54,8 +71,8 @@ downloads_teste/
     └── relatorio.xlsx
 ```
 
-## Possíveis melhorias futuras
+## Próximas melhorias
 
-Permitir selecionar a pasta na execução, tratar colisões de nomes e acrescentar um modo de simulação sem mover arquivos.
+Adicionar interface gráfica e um registro de histórico das movimentações.
 
 **Autor:** [André Coutinho](https://github.com/Coutin061017)
