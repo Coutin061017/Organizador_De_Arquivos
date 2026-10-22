@@ -71,6 +71,16 @@ downloads_teste/
     └── relatorio.xlsx
 ```
 
+## Testes
+
+Execute sem alterar seus arquivos pessoais:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+Os testes utilizam diretórios temporários.
+
 ## Próximas melhorias
 
 Adicionar interface gráfica e um registro de histórico das movimentações.
